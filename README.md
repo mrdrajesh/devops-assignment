@@ -1,19 +1,23 @@
+Run the following in your terminal:
+
+bash
+Copy
+Edit
+cat > README.md << 'EOF'
 # DevOps Interview Assignment
 
 ## ✅ Project Overview
-
-This project demonstrates how to use **Terraform**, **AWS EKS**, **ArgoCD**, and **Kubernetes** to deploy an NGINX web application using GitOps CI/CD.
+This project provisions an EKS cluster using Terraform, installs ArgoCD for GitOps, and deploys an NGINX application to the cluster.
 
 ---
 
 ## 📁 Folder Structure
 
 devops-assignment/
-├── terraform/ # Terraform code for VPC + EKS
-├── manifests/ # Kubernetes deployment + service for NGINX
-├── argocd/ # ArgoCD application YAML
+├── terraform/ # Terraform for VPC + EKS setup
+├── manifests/ # Kubernetes Deployment & Service for NGINX
+├── argocd/ # ArgoCD Application YAML
 └── README.md # Documentation
-
 
 ---
 
@@ -25,38 +29,22 @@ devops-assignment/
 cd terraform
 terraform init
 terraform apply
-Approve the changes by typing yes when prompted.
-
+# Approve with "yes"
 2. Configure kubectl to Access the Cluster
-
 aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster
 3. Install ArgoCD on the EKS Cluster
-
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-4. Access ArgoCD UI
-
+4. Access the ArgoCD UI
 kubectl port-forward svc/argocd-server -n argocd 8080:443
-Then open: http://localhost:8080
-
-🔑 To get the ArgoCD admin password:
-
-
+# Then open: http://localhost:8080
+🔑 Get the ArgoCD Admin Password
 kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 --decode
-5. Deploy the NGINX App via ArgoCD
-
+5. Deploy the NGINX Application via ArgoCD
 kubectl apply -f argocd/nginx-app.yaml
-ArgoCD will automatically sync the application from your GitHub repository.
-
 6. Access the NGINX Application
-
 kubectl get svc
-Copy the LoadBalancer URL and open it in your browser.
-
-Example:
-
-http://a950e436ffedb4a3db3747d7f82530e2-1099551385.us-east-1.elb.amazonaws.com
-
+# Copy the LoadBalancer EXTERNAL-IP and open it in your browser
 ✅ Project Status
 Component	Status
 EKS Cluster	✅ Created
@@ -65,5 +53,5 @@ NGINX App	✅ Deployed
 LoadBalancer	✅ Accessible
 
 👤 Author
-Rajesh Behera
+Name: Rajesh Behera
 GitHub: mrdrajesh
