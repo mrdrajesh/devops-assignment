@@ -1,10 +1,5 @@
-Run the following in your terminal:
 
-bash
-Copy
-Edit
-cat > README.md << 'EOF'
-# DevOps Interview Assignment
+# DevOps Interview Assignment #
 
 ## ✅ Project Overview
 This project provisions an EKS cluster using Terraform, installs ArgoCD for GitOps, and deploys an NGINX application to the cluster.
@@ -25,7 +20,7 @@ devops-assignment/
 
 ### 1. Provision the EKS Cluster using Terraform
 
-```bash
+Run the following in your terminal:
 cd terraform
 terraform init
 terraform apply
@@ -46,11 +41,11 @@ kubectl apply -f argocd/nginx-app.yaml
 kubectl get svc
 # Copy the LoadBalancer EXTERNAL-IP and open it in your browser
 ✅ Project Status
-Component	Status
-EKS Cluster	✅ Created
-ArgoCD  	✅ Installed
-NGINX App	✅ Deployed
-LoadBalancer	✅ Accessible
+Component      	  Status
+EKS Cluster   	✅ Created
+ArgoCD  	      ✅ Installed
+NGINX App	      ✅ Deployed
+LoadBalancer  	✅ Accessible
 
 👤 Author
 Name: Rajesh Behera
